@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox.AudioServices
 
 /** The BEMCheckBoxDelegate protocol. Used to receive life cycle events. */
 @objc public protocol BEMCheckBoxDelegate: NSObjectProtocol {
@@ -195,7 +196,6 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     
     private func commonInit() {
         // Default values
-        tintColor = UIColor.lightGray
         backgroundColor = UIColor.clear
 
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapCheckBox(_:))))
@@ -221,7 +221,8 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     
     internal func setOn(_ on: Bool, animated: Bool, notifyGroup: Bool) {
         self._on = on
-
+        AudioServicesPlaySystemSound(SystemSoundID("4095")!)
+        
         if animated {
             setupLayers()
         } else {
