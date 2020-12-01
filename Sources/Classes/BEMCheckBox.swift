@@ -221,9 +221,7 @@ public class BEMCheckBox: UIControl, CAAnimationDelegate {
     
     internal func setOn(_ on: Bool, animated: Bool, notifyGroup: Bool) {
         self._on = on
-        
-        UINotificationFeedbackGenerator().notificationOccurred(.success)
-        
+                
         if animated {
             setupLayers()
         } else {
